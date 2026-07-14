@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Туристические путёвки</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Список туристических путёвок</h1>
+
+    {% if tours %}
+    <table>
+        <tr>
+            <th>Номер</th>
+            <th>Страна</th>
+            <th>Отель</th>
+            <th>Звёзды</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>Стоимость</th>
+        </tr>
+
+        {% for tour in tours %}
+        <tr>
+            <td>{{ tour.tour_id }}</td>
+            <td>{{ tour.country_name }}</td>
+            <td>{{ tour.hotel_name }}</td>
+            <td>{{ tour.stars }}</td>
+            <td>{{ tour.start_date }}</td>
+            <td>{{ tour.end_date }}</td>
+            <td>{{ tour.price }} руб.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>Путёвки в базе данных отсутствуют.</p>
+    {% endif %}
+</body>
+
+</html>
